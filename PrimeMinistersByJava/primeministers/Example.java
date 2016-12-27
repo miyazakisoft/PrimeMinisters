@@ -2,14 +2,15 @@ package primeministers;
 
 /**
  * 例題プログラム：総理大臣のCSVファイルをHTMLページへと変換する。
+ * 
+ * @version 1.0
+ * @author 宮崎光
  */
-public class Example extends Object
-{
+public class Example extends Object {
 	/**
 	 * サンプルのメインプログラム。
 	 */
-	public static void main(String[] arguments)
-	{
+	public static void main(String[] arguments) {
 		// トランスレータのインスタンスを生成する。
 		Translator aTranslator = new Translator();
 
