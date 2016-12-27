@@ -13,7 +13,7 @@ class Downloader(io.IO):
 
 	def __init__(self, base_directory):
 		"""ダウンローダのコンストラクタ。"""
-        self._base_directory = base_directory
+		self._base_directory = base_directory
         self._url = "http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/"
 		return
 

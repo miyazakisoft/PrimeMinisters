@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+#sys.path.append('./primeministers')
 import primeministers.example
 
 if __name__ == "__main__":
