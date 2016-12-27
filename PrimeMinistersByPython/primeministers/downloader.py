@@ -9,16 +9,16 @@ import io
 import reader
 
 class Downloader(io.IO):
-	"""ダウンローダ：総理大臣のCSVファイル・画像ファイル・サムネイル画像ファイルをダウンロードする。"""
+    """ダウンローダ：総理大臣のCSVファイル・画像ファイル・サムネイル画像ファイルをダウンロードする。"""
 
-	def __init__(self, base_directory):
-		"""ダウンローダのコンストラクタ。"""
-		self._base_directory = base_directory
+    def __init__(self, base_directory):
+        """ダウンローダのコンストラクタ。"""
+        self._base_directory = base_directory
         self._url = "http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/"
-		return
+        return
 
-	def download_all(self):
-		"""すべて（総理大臣の情報を記したCSVファイル・画像ファイル群・縮小画像ファイル群）をダウンロードし、テーブルを応答する。"""
+    def download_all(self):
+        """すべて（総理大臣の情報を記したCSVファイル・画像ファイル群・縮小画像ファイル群）をダウンロードし、テーブルを応答する。"""
         if os.path.isdir(self._base_directory+"images"):
             shutil.rmtree(self._base_directory+"images")
         os.makedirs(self._base_directory+"images")
@@ -35,10 +35,10 @@ class Downloader(io.IO):
         thumbnails_names = a_table.thumbnail_filenames()
         self.download_images(thumbnails_names)
 
-		return a_table
+        return a_table
 
-	def download_csv(self):
-		"""総理大臣の情報を記したCSVファイルをダウンロードする。"""
+    def download_csv(self):
+        """総理大臣の情報を記したCSVファイルをダウンロードする。"""
         url = self._url+"PrimeMinisters.csv"
         csv = urllib.urlopen(url)
         if csv.code != 200:
@@ -46,10 +46,10 @@ class Downloader(io.IO):
         with open(self._base_directory + "PrimeMinisters.csv", "wb") as csv_file:
             shutil.copyfileobj(csv, csv_file)
 
-		return None
+        return None
 
-	def download_images(self, image_filenames):
-		"""画像ファイル群または縮小画像ファイル群をダウンロードする。"""
+    def download_images(self, image_filenames):
+        """画像ファイル群または縮小画像ファイル群をダウンロードする。"""
         for filename in image_filenames:
             url = self._url+filename
             image = urllib.urlopen(url)
@@ -58,4 +58,4 @@ class Downloader(io.IO):
             with open(self._base_directory + filename, "wb") as image_file:
                 shutil.copyfileobj(image, image_file)
             image.close()
-		return
+        return
