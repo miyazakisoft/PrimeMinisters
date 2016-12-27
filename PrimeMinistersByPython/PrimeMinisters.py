@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import sys
-
 import primeministers.example
 
 if __name__ == "__main__":
