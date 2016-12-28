@@ -11,7 +11,7 @@ class IO(object):
 
 		reader_list=[]
 
-		reader = csv.reader(open(filename, 'r'))
+		reader = csv.reader(open(filename, 'rU'))
 		for row in reader:
 			reader_list.append(row)
 		return reader_list
