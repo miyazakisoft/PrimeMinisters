@@ -30,7 +30,7 @@ class Downloader(io.IO):
         a_reader = reader.Reader(self._base_directory + "PrimeMinisters.csv")
         a_table = a_reader.table()
 
-        image_names = a_table.image.image_filenames()
+        image_names = a_table.image_filenames()
         self.download_images(image_names)
         thumbnails_names = a_table.thumbnail_filenames()
         self.download_images(thumbnails_names)

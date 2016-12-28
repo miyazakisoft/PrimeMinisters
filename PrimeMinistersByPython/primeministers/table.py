@@ -20,15 +20,19 @@ class Table(object):
         """自分自身を文字列にして、それを応答する。"""
         a_string = self.__class__.__name__
         a_string += "\n"
-        a_string += "Attributes:"
-        a_string += ",".join(self._attributes)
+        a_string += "attributes:"
+        a_string += ",".join(self._attributes.names())
+        a_string += "\n"
         a_string += "images:"
         a_string += ",".join(self._images)
+        a_string += "\n"
         a_string += "thumbnails:"
         a_string += ",".join(self._thumbnails)
-        a_string += "images:"
-        a_string += ",".join(self._tuples)
-        return
+        for tuple in self._tuples:
+            a_string += "\n"
+            a_string += "tuples:"
+            a_string += str(tuple)
+        return a_string
 
     def add(self, tuple):
         """タプルを追加する。"""
