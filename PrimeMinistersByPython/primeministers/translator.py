@@ -62,7 +62,7 @@ class Translator(object):
 				output = []
 				output.append(values[keys.index('no')])
 				output.append(values[keys.index('order')])
-				output.append(values[keys.index('names')])
+				output.append(values[keys.index('_names')])
 				output.append(values[keys.index('kana')])
 				output.append(values[keys.index('period')])
 				output.append(self.compute_string_of_days(values[keys.index('period')]))

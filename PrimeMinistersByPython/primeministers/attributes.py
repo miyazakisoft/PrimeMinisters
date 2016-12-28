@@ -9,10 +9,10 @@ class Attributes(object):
         self._keys = []
         self._names = []
         if kind_string == "input":
-            self._keys = ["no", "order", "_names", "kana", "period", "school", "party", "image", "thumbnail"]
+            self._keys = ["no", "order", "_names", "kana", "period", "school", "party", "birth", "image", "thumbnail"]
             self._names = ["人目" , "代" , "氏名" , "ふりがな" ,"在位期間" , "出身校" ,"政党" , "出身地" ,"画像" , "縮小画像"]
         elif kind_string == "output":
-            self._keys = ["no", "order", "_names", "kana", "period", "days", "school", "party", "image"]
+            self._keys = ["no", "order", "_names", "kana", "period", "days", "school", "party", "birth", "image"]
             self._names = ["人目" , "代" , "氏名" , "ふりがな" ,"在位期間" , "在位日数", "出身校" ,"政党" , "出身地" ,"画像"]
         else:
             print "Error"
