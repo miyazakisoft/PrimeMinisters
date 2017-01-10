@@ -1,21 +1,16 @@
 package primeministers;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 表：総理大臣の情報テーブル。
+ * 表：人物の情報テーブル。
  * 
  * @version 1.0
  * @author 宮崎光
  */
 public class Table extends Object {
-	/**
-	 * ここを作成してください。 まず、次のページを参照しながら、スケルトン（スタブ）を作ることから始めましょう。
-	 * http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/CSV2HTML/PrimeMinistersJavaDoc/index.html
-	 */
 
 	/**
 	 * 属性リストを記憶するフィールド。
@@ -38,7 +33,7 @@ public class Table extends Object {
 	private List<Tuple> tuples;
 
 	/**
-	 * テーブルのコンストラクタ。
+	 * テーブルのコンストラクタ。 良好（2017年1月10日）
 	 */
 	public Table() {
 		super();
@@ -49,7 +44,7 @@ public class Table extends Object {
 	}
 
 	/**
-	 * タプルを追加する。
+	 * タプルを追加する。 良好（2017年1月10日）
 	 * 
 	 * @param aTuple
 	 *            タプル
@@ -60,27 +55,27 @@ public class Table extends Object {
 	}
 
 	/**
-	 * 属性リストを応答する。
+	 * 属性リストを応答する。 良好（2017年1月10日）
 	 * 
 	 * @return 属性リスト
 	 */
-	public Attributes attributes() {
+	public Attributes getAttributes() {
 		return this.attributes;
 	}
 
 	/**
-	 * 属性リストを設定する。
+	 * 属性リストを設定する。 良好（2017年1月10日）
 	 * 
 	 * @param instanceOfAttributes
 	 *            属性リスト
 	 */
-	public void attributes(Attributes instanceOfAttributes) {
+	public void setAttributes(Attributes instanceOfAttributes) {
 		this.attributes = instanceOfAttributes;
 		return;
 	}
 
 	/**
-	 * 画像群を応答する。
+	 * 画像群を応答する。 良好（2017年1月10日）
 	 * 
 	 * @return 画像群
 	 */
@@ -89,19 +84,7 @@ public class Table extends Object {
 	}
 
 	/**
-	 * 画像またはサムネイル画像の文字列を受け取って該当画像を応答する。
-	 * 
-	 * @param aString
-	 *            画像またはサムネイル画像の文字列
-	 */
-	@SuppressWarnings("unused")
-	private Image picture(String aString) {
-		// 意味がわからないので、パス
-		return null;
-	}
-
-	/**
-	 * サムネイル画像群を応答する。
+	 * サムネイル画像群を応答する。 良好（2017年1月10日）
 	 * 
 	 * @return サムネイル画像群
 	 */
@@ -110,7 +93,7 @@ public class Table extends Object {
 	}
 
 	/**
-	 * 自分自身を文字列にして、それを応答する。
+	 * 自分自身を文字列にして、それを応答する。 良好（2017年1月10日）
 	 * 
 	 * @return 自分自身の文字列
 	 */
@@ -123,7 +106,7 @@ public class Table extends Object {
 	}
 
 	/**
-	 * タプル群を応答する。
+	 * タプル群を応答する。 良好（2017年1月10日）
 	 * 
 	 * @return タプル群
 	 */

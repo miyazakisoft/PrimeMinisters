@@ -6,8 +6,17 @@ all:
 clean:
 	$(ANT) clean
 
-test:
-	$(ANT) test
+test1:
+	$(ANT) test1
+
+test2:
+	$(ANT) test2
+
+test3:
+	$(ANT) test3
+
+test4:
+	$(ANT) test4
 
 install:
 	$(ANT) install

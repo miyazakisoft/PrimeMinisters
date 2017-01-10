@@ -28,7 +28,7 @@
     <javac
       srcdir="${basedir}"
       destdir="${destdir}"
-      includeAntRuntime="true" 
+      includeAntRuntime="true"
       encoding="UTF-8"
       deprecation="on"
       verbose="false">
@@ -61,9 +61,30 @@
     <echo>on ${date} at ${time}</echo>
   </target>
 
-  <target name="test" depends="all" description="test">
+  <target name="test1" depends="all" description="test">
     <exec executable="java" spawn="false">
-      <arg line="-Xmx512m -Xss1024k -jar ${package}.jar" />
+      <arg line="-Xmx512m -Xss1024k -jar ${package}.jar http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/PrimeMinisters.csv 総理大臣（単純）" />
+    </exec>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="test2" depends="all" description="test">
+    <exec executable="java" spawn="false">
+      <arg line="-Xmx512m -Xss1024k -jar ${package}.jar http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/PrimeMinisters2.csv 総理大臣（複雑）" />
+    </exec>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="test3" depends="all" description="test">
+    <exec executable="java" spawn="false">
+      <arg line="-Xmx512m -Xss1024k -jar ${package}.jar http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/TokugawaShogunate/TokugawaShogunate.csv 徳川幕府（単純）" />
+    </exec>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="test4" depends="all" description="test">
+    <exec executable="java" spawn="false">
+      <arg line="-Xmx512m -Xss1024k -jar ${package}.jar http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/TokugawaShogunate/TokugawaShogunate2.csv 徳川幕府（複雑）" />
     </exec>
     <echo>on ${date} at ${time}</echo>
   </target>
