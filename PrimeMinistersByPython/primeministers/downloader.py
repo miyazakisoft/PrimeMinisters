@@ -19,15 +19,15 @@ class Downloader(io.IO):
 
     def download_all(self):
         """すべて（総理大臣の情報を記したCSVファイル・画像ファイル群・縮小画像ファイル群）をダウンロードし、テーブルを応答する。"""
-        if os.path.isdir(self._base_directory+"images"):
-            shutil.rmtree(self._base_directory+"images")
-        os.makedirs(self._base_directory+"images")
-        if os.path.isdir(self._base_directory+"thumbnails"):
-            shutil.rmtree(self._base_directory+"thumbnails")
-        os.makedirs(self._base_directory+"thumbnails")
+        if os.path.isdir(self._base_directory+"/images"):
+            shutil.rmtree(self._base_directory+"/images")
+        os.makedirs(self._base_directory+"/images")
+        if os.path.isdir(self._base_directory+"/thumbnails"):
+            shutil.rmtree(self._base_directory+"/thumbnails")
+        os.makedirs(self._base_directory+"/thumbnails")
 
         self.download_csv()
-        a_reader = reader.Reader(self._base_directory + "PrimeMinisters.csv")
+        a_reader = reader.Reader(self._base_directory + "/PrimeMinisters.csv")
         a_table = a_reader.table()
 
         image_names = a_table.image_filenames()
@@ -43,7 +43,7 @@ class Downloader(io.IO):
         csv = urllib.urlopen(url)
         if csv.code != 200:
             return
-        with open(self._base_directory + "PrimeMinisters.csv", "wb") as csv_file:
+        with open(self._base_directory + "/PrimeMinisters.csv", "wb") as csv_file:
             shutil.copyfileobj(csv, csv_file)
 
         return None
