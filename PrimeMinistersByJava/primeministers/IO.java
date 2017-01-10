@@ -1,12 +1,17 @@
 package primeministers;
 
 import java.io.Reader;
+import java.io.Writer;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,10 +25,6 @@ import java.util.List;
  * @author 宮崎光
  */
 public abstract class IO extends Object {
-	/**
-	 * ここを作成してください。 まず、次のページを参照しながら、スケルトン（スタブ）を作ることから始めましょう。
-	 * http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/CSV2HTML/PrimeMinistersJavaDoc/index.html
-	 */
 
 	/**
 	 * テーブル（表：スプレッドシート）を記憶するフィールド。
@@ -31,7 +32,7 @@ public abstract class IO extends Object {
 	protected Table table;
 
 	/**
-	 * 入出力のコンストラクタ
+	 * 入出力のコンストラクタ 良好（2017年1月10日）
 	 */
 	public IO() {
 		super();
@@ -39,7 +40,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * ファイルやディレクトリを削除するクラスメソッド。
+	 * ファイルやディレクトリを削除するクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param aFile
 	 *            ファイル名
@@ -51,12 +52,14 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * 総理大臣ページのためのディレクトリ（存在しなければ作成して）を応答するメソッド。
+	 * 人物ページのためのディレクトリ（存在しなければ作成して）を応答するメソッド。 良好（2017年1月10日）
 	 * 
+	 * @param TittleName
+	 *            タイトル名
 	 * @return aFile ファイル
 	 */
-	public static File directoryOfPages() {
-		File aFile = new File(System.getProperty("user.home") + "/Desktop", "SouriDaijin");
+	public static File directoryOfPages(String TittleName) {
+		File aFile = new File(System.getProperty("user.home") + "/Desktop", TittleName);
 		if (!aFile.exists()) {
 			aFile.mkdir();
 		}
@@ -64,7 +67,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * 入出力する際の文字コードを応答するクラスメソッド。
+	 * 入出力する際の文字コードを応答するクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @return 文字コード
 	 */
@@ -73,7 +76,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * 指定されたファイルからテキストを読み込んで、それを行リストにして応答するクラスメソッド。
+	 * 指定されたファイルからテキストを読み込んで、それを行リストにして応答するクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param aFile
 	 *            ファイル
@@ -100,7 +103,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * 指定されたファイル文字列からテキストを読み込んで、それを行リストにして応答するクラスメソッド。
+	 * 指定されたファイル文字列からテキストを読み込んで、それを行リストにして応答するクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param aFileString
 	 *            ファイル文字列
@@ -113,7 +116,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * 指定されたURL文字列からテキストを読み込んで、それを行リストにして応答するクラスメソッド。
+	 * 指定されたURL文字列からテキストを読み込んで、それを行リストにして応答するクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param urlString
 	 *            URL文字列
@@ -132,7 +135,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * 指定されたURLからテキストを読み込んで、それを行リストにして応答するクラスメソッド。
+	 * 指定されたURLからテキストを読み込んで、それを行リストにして応答するクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param aURL
 	 *            URL
@@ -159,18 +162,55 @@ public abstract class IO extends Object {
 
 	/**
 	 * 文字列をセパレータで分割したトークン列を応答するクラスメソッド。
+	 * 連続フラグをtrueにすると、separatorsで指定した文字列(aString)が連続していた場合、 空白を追加するようになる。
+	 * 良好（2017年1月10日）
 	 * 
 	 * @param aString
 	 *            文字列
 	 * @param separators
 	 *            セパレータ
+	 * @param ConsecutiveFlag
+	 *            連続フラグ
+	 * @return result 文字列をセパレータで分割したトークン列
 	 */
-	public static ArrayList<String> splitString(String aString, String separators) {
-		return null;
+	public static ArrayList<String> splitString(String aString, String separators, Boolean ConsecutiveFlag) {
+		ArrayList<Integer> indexes;
+		Integer stop;
+		Integer index;
+		ArrayList<String> result;
+
+		indexes = new ArrayList<Integer>();
+		indexes.add(-1);
+
+		stop = aString.length();
+		for (index = 0; index < stop; index++) {
+			if ((separators.indexOf(aString.charAt(index))) >= 0) {
+				indexes.add(index);
+			}
+		}
+		indexes.add(stop);
+		stop = indexes.size() - 1;
+		result = new ArrayList<String>();
+		for (index = 0; index < stop; index++) {
+			int start;
+			int end;
+
+			start = indexes.get(index) + 1;
+			end = indexes.get(index + 1) - 1;
+			if (end >= start) {
+				result.add(aString.substring(start, end + 1));
+			} else {
+				if (ConsecutiveFlag) {
+					result.add("");
+				}
+			}
+		}
+
+		return result;
 	}
 
 	/**
-	 * テーブルを応答する。
+	 * テーブルを応答する。 良好（2017年1月10日）
 	 * 
 	 * @return talbe テーブル（表：スプレッドシート）
 	 */
@@ -179,7 +219,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * 指定された行リストを、指定されたファイルに書き出すクラスメソッド。
+	 * 指定された行リストを、指定されたファイルに書き出すクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param aCollection
 	 *            リスト
@@ -188,11 +228,31 @@ public abstract class IO extends Object {
 	 */
 	public static void writeText(List<String> aCollection, File aFile) {
 
+		try {
+			// FileNotFoundExceptionが出るかもしれない
+			OutputStream outputStream = new FileOutputStream(aFile);
+			// UnsupportedEncodingExceptionが出るかもしれない
+			Writer outputStreamWriter = new OutputStreamWriter(outputStream, IO.encodingSymbol());
+
+			Writer outputWriter = new BufferedWriter(outputStreamWriter);
+
+			String crlf = System.getProperty("line.separator");
+			for (String aString : aCollection) {
+				// IOExceptionが出るかもしれない
+				outputWriter.write(aString);
+				outputWriter.write(crlf);
+			}
+			// IOExceptionが出るかもしれない
+			outputWriter.close();
+		} catch (IOException anException) {
+			anException.printStackTrace();
+		}
 		return;
+
 	}
 
 	/**
-	 * 指定された行リストを、指定されたファイル名のファイルに書き出すクラスメソッド。
+	 * 指定された行リストを、指定されたファイル名のファイルに書き出すクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param aCollection
 	 *            リスト
@@ -206,7 +266,7 @@ public abstract class IO extends Object {
 	}
 
 	/**
-	 * テキストをリストに追加し、そのリストを返すクラスメソッド。
+	 * テキストをリストに追加し、そのリストを返すクラスメソッド。 良好（2017年1月10日）
 	 * 
 	 * @param inputStreamReader
 	 *            インプットストリームリーダー

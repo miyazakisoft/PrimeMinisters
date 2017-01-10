@@ -3,18 +3,13 @@ package primeministers;
 import java.util.List;
 
 /**
- * タプル：総理大臣の情報テーブルの中の各々のレコード。
+ * タプル：人物の情報テーブルの中の各々のレコード。
  * 
  * @version 1.0
  * @author 宮崎光
  */
 
 public class Tuple extends Object {
-	/**
-	 * ここを作成してください。 まず、次のページを参照しながら、スケルトン（スタブ）を作ることから始めましょう。
-	 * http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/CSV2HTML/PrimeMinistersJavaDoc/index.html
-	 */
-
 	/**
 	 * 属性リストを記憶するフィールド。
 	 */
@@ -26,7 +21,7 @@ public class Tuple extends Object {
 	private List<String> values;
 
 	/**
-	 * 属性リスト値リストからタプルを作るコンストラクタ。
+	 * 属性リスト値リストからタプルを作るコンストラクタ。 良好（2017年1月10日）
 	 * 
 	 * @param instanceOfAttributes
 	 *            属性リスト
@@ -41,7 +36,7 @@ public class Tuple extends Object {
 	}
 
 	/**
-	 * 属性リストを応答する。
+	 * 属性リストを応答する。 良好（2017年1月10日）
 	 * 
 	 * @return 属性リスト
 	 */
@@ -50,7 +45,7 @@ public class Tuple extends Object {
 	}
 
 	/**
-	 * 自分自身を文字列にして、それを応答する。
+	 * 自分自身を文字列にして、それを応答する。 良好（2017年1月10日）
 	 * 
 	 * @return 自分自身の文字列
 	 */
@@ -63,7 +58,7 @@ public class Tuple extends Object {
 	}
 
 	/**
-	 * 値リストを応答する。
+	 * 値リストを応答する。 良好（2017年1月10日）
 	 * 
 	 * @return 値リスト
 	 */
