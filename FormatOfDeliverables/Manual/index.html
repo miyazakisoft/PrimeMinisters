@@ -246,12 +246,183 @@ th {
   <li><a href="../Manual/index.html" class="current">マニュアル</a></li>
 </ul>
 </div>
+
+
+
 <hr>
-<h2>プログラミング言語「総理大臣ページ生成」マニュアル</h2>
+<h2>プログラミング言語「総理大臣」マニュアル</h2>
 <div class="belt">
-<h3><a name="KanseiSaseteKudasai">完成させてください</a></h3>
+<h3><a name="Install">Java編</a></h3>
 </div>
+<ol>
+  <li><a href="../Program/PrimeMinistersByJava.zip">PrimeMnisterByJava.zip</a>のアーカイブファイルを適当な場所に展開する。
+  <pre class="belt">$ unzip PrimeMinistersByJava.zip
+    Archive:  PrimeMinistersByJava.zip
+   creating: PrimeMinistersByJava/
+   creating: PrimeMinistersByJava/PrimeMinisters.app/
+   creating: PrimeMinistersByJava/PrimeMinisters.app/Contents/
+   creating: PrimeMinistersByJava/PrimeMinisters.app/Contents/MacOS/
+   creating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/
+   creating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/Scripts/
+   creating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/description.rtfd/
+   creating: PrimeMinistersByJava/primeministers/
+  inflating: PrimeMinistersByJava/Makefile
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Info.plist
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/MacOS/applet
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/PkgInfo
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/JavaApp.icns
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/Scripts/main.scpt
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/applet.icns
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/applet.rsrc
+  inflating: PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/description.rtfd/TXT.rtf
+  inflating: PrimeMinistersByJava/build.xml
+  inflating: PrimeMinistersByJava/primeministers.mf
+  inflating: PrimeMinistersByJava/primeministers/Attributes.java
+  inflating: PrimeMinistersByJava/primeministers/Downloader.java
+  inflating: PrimeMinistersByJava/primeministers/Example.java
+  inflating: PrimeMinistersByJava/primeministers/IO.java
+  inflating: PrimeMinistersByJava/primeministers/Reader.java
+  inflating: PrimeMinistersByJava/primeministers/Table.java
+  inflating: PrimeMinistersByJava/primeministers/Translator.java
+  inflating: PrimeMinistersByJava/primeministers/Tuple.java
+  inflating: PrimeMinistersByJava/primeministers/Writer.java    </pre>
+
+    <li>展開して得られるPrimeMinisterByJavaというディレクトリへ移る。
+    <pre class="belt">$ cd PrimeMinisterByJava</pre>
+  <li>中身を確認する。
+  <pre class="belt">$ ls *
+Makefile		build.xml		primeministers.mf
+
+PrimeMinisters.app:
+Contents
+
+primeministers:
+Attributes.java	Example.java	Reader.java	Translator.java	Writer.java
+Downloader.java	IO.java		Table.java	Tuple.java</pre>
+    <li>makeコマンドで実行する。
+    <pre class="belt">$ make test1
+env LC_ALL=en ant test1
+Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+Buildfile: /Users/kou/Desktop/PrimeMinistersByJava/build.xml
+
+prepare:
+     [echo] on 2017/01/11 at 12:46:11
+
+compile:
+     [echo] on 2017/01/11 at 12:46:11
+
+jar:
+     [echo] on 2017/01/11 at 12:46:11
+
+all:
+     [echo] on 2017/01/11 at 12:46:11
+
+test1:
+     [exec] Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+     [exec] 画像をダウンロードします.
+     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/images/039.jpg
+     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/images/040.jpg
+     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/images/041.jpg
+                      ・                      ・                      ・                      ・                      ・
+                      ・                      ・                      ・                      ・                      ・
+                      ・                      ・                      ・                      ・                      ・
+     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/thumbnails/061.jpg
+     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/thumbnails/062.jpg
+     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/thumbnails/057.jpg
+     [exec] 人物のCSVファイルからHTMLページへの変換を無事に完了しました.
+     [echo] on 2017/01/11 at 12:46:11
+BUILD SUCCESSFUL
+Total time: 10 seconds</pre>
+
+<li>htmlを開く。
+<pre class="belt">デスクトップに「総理大臣（単純）」という名のディレクトリが生成されるので、
+中を開き、「index.html」をダブルクリックすると、総理大臣のページが生成されているのが確認できる。</pre>
+
+<li>その他の形式でも実行できることを確認する。
+<pre class="belt">「$ make test1」で実行すると、総理大臣の単純なCSVファイルの形式で、htmlが生成されていた。
+それだけでは面白くないので、それ以外のケースでも実行できるように、「$ make test2」〜「$ make test4」をしつらえた。
+
+以下にmakeコマンドの入力とそれに応じたhtml生成の位置づけを書いておくので、試してほしい。
+　「$ make test1」・・・総理大臣（単純）
+　「$ make test2」・・・総理大臣（複雑）
+　「$ make test3」・・・徳川幕府（単純）
+　「$ make test4」・・・徳川幕府（複雑）</pre>
+</ol>
+
+
+
+<div class="belt">
+<h3><a name="Install">Python編</a></h3>
+</div>
+<ol>
+  <li><a href="../Program/PrimeMinistersByPython.zip">PrimeMnisterByPython.zip</a>のアーカイブファイルを適当な場所に展開する。
+  <pre class="belt">$ unzip PrimeMinistersByPython.zip
+Archive:  PrimeMinistersByPython.zip
+   creating: PrimeMinistersByPython/
+  inflating: PrimeMinistersByPython/.DS_Store
+  inflating: PrimeMinistersByPython/Makefile
+  inflating: PrimeMinistersByPython/MANIFEST
+  inflating: PrimeMinistersByPython/MANIFEST.in
+   creating: PrimeMinistersByPython/primeministers/
+  inflating: PrimeMinistersByPython/primeministers/.DS_Store
+ extracting: PrimeMinistersByPython/primeministers/__init__.py
+  inflating: PrimeMinistersByPython/primeministers/attributes.py
+  inflating: PrimeMinistersByPython/primeministers/downloader.py
+  inflating: PrimeMinistersByPython/primeministers/example.py
+  inflating: PrimeMinistersByPython/primeministers/io.py
+  inflating: PrimeMinistersByPython/primeministers/reader.py
+  inflating: PrimeMinistersByPython/primeministers/table.py
+  inflating: PrimeMinistersByPython/primeministers/translator.py
+  inflating: PrimeMinistersByPython/primeministers/tuple.py
+  inflating: PrimeMinistersByPython/primeministers/writer.py
+   creating: PrimeMinistersByPython/PrimeMinisters.app/
+   creating: PrimeMinistersByPython/PrimeMinisters.app/Contents/
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Info.plist
+   creating: PrimeMinistersByPython/PrimeMinisters.app/Contents/MacOS/
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/MacOS/applet
+ extracting: PrimeMinistersByPython/PrimeMinisters.app/Contents/PkgInfo
+   creating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/applet.icns
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/applet.rsrc
+   creating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/description.rtfd/
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/description.rtfd/TXT.rtf
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/JavaApp.icns
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/PrimeMinister.icns
+   creating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/Scripts/
+  inflating: PrimeMinistersByPython/PrimeMinisters.app/Contents/Resources/Scripts/main.scpt
+  inflating: PrimeMinistersByPython/PrimeMinisters.py
+  inflating: PrimeMinistersByPython/README.txt
+  inflating: PrimeMinistersByPython/setup.py</pre>
+
+    <li>展開して得られるPrimeMinistersByPythonというディレクトリへ移る。
+    <pre class="belt">$ cd PrimeMinistersByPython</pre>
+  <li>中身を確認する。
+  <pre class="belt">$ ls *
+MANIFEST		Makefile		README.txt
+MANIFEST.in		PrimeMinisters.py	setup.py
+
+PrimeMinisters.app:
+Contents
+
+primeministers:
+__init__.py	downloader.py	io.py		table.py	tuple.py
+attributes.py	example.py	reader.py	translator.py	writer.py</pre>
+
+    <li>makeコマンドで実行し、HTMLが自動的に表示されることを確認する。
+    <pre class="belt">$ make test
+      python PrimeMinisters.py
+      Table
+      ・
+      ・
+      ・
+      derless" src=thumbnails/057.jpg width="25" height="32" alt=63.jpg></a>,
+$
+
+HTMLが自動的に表示される。</pre>
+
+
+</ol>
 <hr>
-<div class="right-small">Copyright 20xx Project xx, Updated: 2016/11/30 (Created: 2009/11/11)</div>
+<div class="right-small">Copyright 2009-2017 Project SouriDaijin, Updated: 2017/01/11 (Created: 2016/12/17)</div>
 </body>
 </html>
