@@ -19,7 +19,7 @@ class Example(object):
 		# すでに存在すれば、当該ディレクトリを消して、新たに作り、
 		# 存在しなければ、当該ディレクトリを作成する。
 		home_directory = os.environ['HOME']
-		base_directory = home_directory + '/Desktop/SouriDaijin'
+		base_directory = home_directory + '/Desktop/SouriDaijin/'
 		if os.path.isdir(base_directory):
 			shutil.rmtree(base_directory)
 		os.makedirs(base_directory)
