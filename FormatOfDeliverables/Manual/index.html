@@ -252,7 +252,7 @@ th {
 <hr>
 <h2>プログラミング言語「総理大臣」マニュアル</h2>
 <div class="belt">
-<h3><a name="Install">Java編</a></h3>
+<h3><a name="InstallByJava">インストール（Java編）</a></h3>
 </div>
 <ol>
   <li><a href="../Program/PrimeMinistersByJava.zip">PrimeMnisterByJava.zip</a>のアーカイブファイルを適当な場所に展開する。
@@ -297,62 +297,83 @@ PrimeMinisters.app:
 Contents
 
 primeministers:
-Attributes.java	Example.java	Reader.java	Translator.java	Writer.java
-Downloader.java	IO.java		Table.java	Tuple.java</pre>
-    <li>makeコマンドで実行する。
-    <pre class="belt">$ make test1
-env LC_ALL=en ant test1
+Attributes.java	Downloader.java	Example.java	IO.java		Reader.java	Table.java	Translator.java	Tuple.java	Writer.java</pre>
+
+
+    <li>makeする。
+    <pre class="belt">$ make
+env LC_ALL=en ant all
 Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
-Buildfile: /Users/kou/Desktop/PrimeMinistersByJava/build.xml
+Buildfile: /Users/kou/Dropbox/1,kyotosangyobox/6semester/ProgramingLanguage/学問/PrimeMinisters/PrimeMinistersByJava/build.xml
 
 prepare:
-     [echo] on 2017/01/11 at 12:46:11
+     [echo] on 2017/01/12 at 02:16:16
 
 compile:
-     [echo] on 2017/01/11 at 12:46:11
+     [echo] on 2017/01/12 at 02:16:16
 
 jar:
-     [echo] on 2017/01/11 at 12:46:11
+      [jar] Building jar: /Users/kou/Dropbox/1,kyotosangyobox/6semester/ProgramingLanguage/学問/PrimeMinisters/PrimeMinistersByJava/primeministers.jar
+     [echo] on 2017/01/12 at 02:16:16
 
 all:
-     [echo] on 2017/01/11 at 12:46:11
+     [echo] on 2017/01/12 at 02:16:16
 
-test1:
-     [exec] Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
-     [exec] 画像をダウンロードします.
-     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/images/039.jpg
-     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/images/040.jpg
-     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/images/041.jpg
-                      ・                      ・                      ・                      ・                      ・
-                      ・                      ・                      ・                      ・                      ・
-                      ・                      ・                      ・                      ・                      ・
-     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/thumbnails/061.jpg
-     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/thumbnails/062.jpg
-     [exec] http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/thumbnails/057.jpg
-     [exec] 人物のCSVファイルからHTMLページへの変換を無事に完了しました.
-     [echo] on 2017/01/11 at 12:46:11
 BUILD SUCCESSFUL
-Total time: 10 seconds</pre>
+Total time: 0 seconds</pre>
 
-<li>htmlを開く。
-<pre class="belt">デスクトップに「総理大臣（単純）」という名のディレクトリが生成されるので、
-中を開き、「index.html」をダブルクリックすると、総理大臣のページが生成されているのが確認できる。</pre>
 
-<li>その他の形式でも実行できることを確認する。
-<pre class="belt">「$ make test1」で実行すると、総理大臣の単純なCSVファイルの形式で、htmlが生成されていた。
-それだけでは面白くないので、それ以外のケースでも実行できるように、「$ make test2」〜「$ make test4」をしつらえた。
+<li>PrimeMinister.jarが生成されていることを確かめる。
+<pre class="belt">$ ls *
+Makefile		build.xml		primeministers.jar	primeministers.mf
 
-以下にmakeコマンドの入力とそれに応じたhtml生成の位置づけを書いておくので、試してほしい。
-　「$ make test1」・・・総理大臣（単純）
-　「$ make test2」・・・総理大臣（複雑）
-　「$ make test3」・・・徳川幕府（単純）
-　「$ make test4」・・・徳川幕府（複雑）</pre>
+Classes:
+primeministers
+
+PrimeMinisters.app:
+Contents
+
+primeministers:
+Attributes.java	Downloader.java	Example.java	IO.java		Reader.java	Table.java	Translator.java	Tuple.java	Writer.java</pre>
+
+
+<li>生成したPrimeMinister.jarをアプリケーション（PrimeMinister.app）の中にインストールする。
+  <pre class="belt">$ make install
+env LC_ALL=en ant install
+Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+Buildfile: /Users/kou/Dropbox/1,kyotosangyobox/6semester/ProgramingLanguage/学問/PrimeMinisters/PrimeMinistersByJava/build.xml
+
+prepare:
+    [mkdir] Created dir: /Users/kou/Dropbox/1,kyotosangyobox/6semester/ProgramingLanguage/学問/PrimeMinisters/PrimeMinistersByJava/Classes
+     [echo] on 2017/01/12 at 02:22:43
+
+compile:
+    [javac] Compiling 9 source files to /Users/kou/Dropbox/1,kyotosangyobox/6semester/ProgramingLanguage/学問/PrimeMinisters/PrimeMinistersByJava/Classes
+     [echo] on 2017/01/12 at 02:22:43
+
+jar:
+      [jar] Building jar: /Users/kou/Dropbox/1,kyotosangyobox/6semester/ProgramingLanguage/学問/PrimeMinisters/PrimeMinistersByJava/primeministers.jar
+     [echo] on 2017/01/12 at 02:22:43
+
+all:
+     [echo] on 2017/01/12 at 02:22:43
+
+install:
+     [copy] Copying 1 file to /Users/kou/Dropbox/1,kyotosangyobox/6semester/ProgramingLanguage/学問/PrimeMinisters/PrimeMinistersByJava/PrimeMinisters.app/Contents/Resources/Java
+     [echo] on 2017/01/12 at 02:22:43
+
+BUILD SUCCESSFUL
+Total time: 1 second
+</pre>
+
+<a href="#ExecutionByJava">実行方法（Java編）へ続く</a>
+
 </ol>
 
 
 
 <div class="belt">
-<h3><a name="Install">Python編</a></h3>
+<h3><a name="InstallByPython">インストール（Python編）</a></h3>
 </div>
 <ol>
   <li><a href="../Program/PrimeMinistersByPython.zip">PrimeMnisterByPython.zip</a>のアーカイブファイルを適当な場所に展開する。
@@ -398,8 +419,7 @@ Archive:  PrimeMinistersByPython.zip
     <pre class="belt">$ cd PrimeMinistersByPython</pre>
   <li>中身を確認する。
   <pre class="belt">$ ls *
-MANIFEST		Makefile		README.txt
-MANIFEST.in		PrimeMinisters.py	setup.py
+MANIFEST		MANIFEST.in		Makefile		PrimeMinisters.py	README.txt		setup.py
 
 PrimeMinisters.app:
 Contents
@@ -408,20 +428,84 @@ primeministers:
 __init__.py	downloader.py	io.py		table.py	tuple.py
 attributes.py	example.py	reader.py	translator.py	writer.py</pre>
 
-    <li>makeコマンドで実行し、HTMLが自動的に表示されることを確認する。
-    <pre class="belt">$ make test
-      python PrimeMinisters.py
-      Table
-      ・
-      ・
-      ・
-      derless" src=thumbnails/057.jpg width="25" height="32" alt=63.jpg></a>,
-$
+<li>makeする。
+  <pre class="belt">$ make
+rm -rf ~/Desktop/SouriDaijin</pre>
 
-HTMLが自動的に表示される。</pre>
+<li>PrimeMinisterByPythonのディレクトリの中身が正しいかを確認する。
+  <pre class="belt">$ ls *
+MANIFEST		MANIFEST.in		Makefile		PrimeMinisters.py	README.txt		setup.py
+
+PrimeMinisters.app:
+Contents
+
+primeministers:
+__init__.py	downloader.py	io.py		table.py	tuple.py
+attributes.py	example.py	reader.py	translator.py	writer.py</pre>
 
 
+<li>生成したものをアプリケーション（PrimeMinister.app）の中にインストールする。
+<pre class="belt">$ make install
+if [ ! -e PrimeMinisters.app/Contents/Resources/Python/ ] ; then mkdir PrimeMinisters.app/Contents/Resources/Python/ ; fi
+cp -p -r PrimeMinisters.py primeministers PrimeMinisters.app/Contents/Resources/Python/</pre>
+
+
+<a href="#ExecutionByPython">実行方法（Python編）へ続く</a>
 </ol>
+
+
+
+<div class="belt">
+<h3><a name="ExecutionByJava">実行方法（Java編）</a></h3>
+</div>
+
+　実行方法は以下の３通りある。<br><br>
+
+<li>makeコマンドで実行する方法
+  <pre class="belt">ターミナルを開き「$make test」を入力すると、
+デスクトップに「PrimeMinisters」という名のディレクトリが生成されるので、
+中を開き、「index.html」をダブルクリックすると、総理大臣のページが生成されているのが確認できる。</pre>
+<li>javaコマンドで実行する方法
+  <pre class="belt">ターミナルを開き「$java -jar primeministers.jar」を入力すると、
+デスクトップに「PrimeMinisters」という名のディレクトリが生成されるので、
+中を開き、「index.html」をダブルクリックすると、総理大臣のページが生成されているのが確認できる。</pre>
+<li>アプリケーションで実行する方法
+  <pre class="belt">「PrimeMinisters.app」をダブルクリックすると、
+デスクトップに「PrimeMinisters」という名のディレクトリが生成されるので、
+中を開き、「index.html」をダブルクリックすると、総理大臣のページが生成されているのが確認できる。</pre>
+
+<a href="#Omake">おまけ（Java編のみ）へ続く</a>
+
+
+<div class="belt">
+<h3><a name="ExecutionByPython">実行方法（Python編）</a></h3>
+</div>
+
+　実行方法は以下の２通りある。<br><br>
+
+<li>makeコマンドで実行する方法
+  <pre class="belt">ターミナルを開き「$make test」を入力すると、
+デスクトップに「PrimeMinisters」という名のディレクトリが生成され、
+自動的に、総理大臣のwebページが表示される。</pre>
+
+<li>アプリケーションで実行する方法
+  <pre class="belt">「PrimeMinisters.app」をダブルクリックすると、
+デスクトップに「PrimeMinisters」という名のディレクトリが生成され、
+自動的に、総理大臣のwebページが表示される。</pre>
+
+
+
+<div class="belt">
+<h3><a name="Omake">おまけ（Java編のみ）</a></h3>
+</div>
+　Java編のみその他の形式でも対応できるようにした。<br>
+　makeコマンドで実行できるようにしつらえているので、<br>
+　makeコマンド名とhtml生成の位置付けを以下に記しておく。
+<pre class="belt">
+　「$ make test1」・・・総理大臣（単純）←PrimeMinistersという名のディレクトリが生成される。
+　「$ make test2」・・・総理大臣（複雑）
+　「$ make test3」・・・徳川幕府（単純）
+　「$ make test4」・・・徳川幕府（複雑）</pre>
 <hr>
 <div class="right-small">Copyright 2009-2017 Project SouriDaijin, Updated: 2017/01/11 (Created: 2016/12/17)</div>
 </body>
