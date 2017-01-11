@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * リーダ：人物の情報を記したCSVファイルを読み込んでテーブルに仕立て上げる。
- * 
+ *
  * @version 1.0
  * @author 宮崎光
  */
@@ -29,7 +29,7 @@ public class Reader extends IO {
 
 	/**
 	 * ダウンロードしたCSVファイルを応答する。 良好（2017年1月10日）
-	 * 
+	 *
 	 * @return file ファイル
 	 */
 	public File getFile() {
@@ -38,7 +38,7 @@ public class Reader extends IO {
 
 	/**
 	 * ダウンロードしたCSVファイルのローカルなファイルを応答するクラスメソッド。 良好（2017年1月10日）
-	 * 
+	 *
 	 * @return file.getAbsoluteFile() ダウンロードしたCSVファイルのローカルなファイル
 	 */
 	public File filenameOfCSV() {
@@ -61,20 +61,14 @@ public class Reader extends IO {
 		for (String aString : aCollection) {
 			List<String> aRow = null;
 
-			if (columnNumTargetFlag) {
-				aRow = IO.splitString(aString.replaceAll("\"", ""), ",", true);
-			} else {
-				StringBuilder sb = new StringBuilder();
-				sb.append(aBuffString);
-				sb.append("<br>");
-				sb.append(aString);
-				aRow = IO.splitString(sb.toString().replaceAll("\"", ""), ",", true);
-			}
+			aBuffString = new StringBuilder().append(aBuffString).append(aString).toString();
+			aRow = IO.splitString(aBuffString.replaceAll("\"", ""), ",", true);
 
 			if (isFirstLine) {
 				columnNumTarget = aRow.size();
 				inputTable.setAttributes(new Attributes(aRow));
 				isFirstLine = false;
+				aBuffString = "";
 			} else {
 				columnNumTargetFlag = aRow.size() == columnNumTarget;
 
@@ -83,7 +77,7 @@ public class Reader extends IO {
 					inputTable.add(inputTuple);
 					aBuffString = "";
 				} else {
-					aBuffString = new StringBuilder().append(aBuffString).append(aString).toString();
+					aBuffString = new StringBuilder().append(aBuffString).append("<br>").toString();
 				}
 			}
 
