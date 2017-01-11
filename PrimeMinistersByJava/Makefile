@@ -6,6 +6,9 @@ all:
 clean:
 	$(ANT) clean
 
+test:
+	$(ANT) test
+
 test1:
 	$(ANT) test1
 
