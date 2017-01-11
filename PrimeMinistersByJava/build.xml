@@ -61,9 +61,16 @@
     <echo>on ${date} at ${time}</echo>
   </target>
 
+  <target name="test" depends="all" description="test">
+		<exec executable="java" spawn="false">
+			<arg line="-Xmx512m -Xss1024k -jar ${package}.jar" />
+		</exec>
+		<exec executable="date" spawn="false" />
+	</target>
+
   <target name="test1" depends="all" description="test">
     <exec executable="java" spawn="false">
-      <arg line="-Xmx512m -Xss1024k -jar ${package}.jar http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/PrimeMinisters.csv 総理大臣（単純）" />
+      <arg line="-Xmx512m -Xss1024k -jar ${package}.jar http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/PrimeMinisters/PrimeMinisters.csv PrimeMinisters" />
     </exec>
     <echo>on ${date} at ${time}</echo>
   </target>
