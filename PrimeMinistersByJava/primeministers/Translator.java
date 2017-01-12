@@ -1,5 +1,7 @@
 package primeministers;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -78,17 +80,9 @@ public class Translator extends Object {
 			dayTo = Integer.parseInt(aStringArray.get(5));
 		}
 
-		Calendar aCalendarFrom = Calendar.getInstance();
-		Calendar aCalendarTo = Calendar.getInstance();
-
-		aCalendarFrom.set(yearFrom, monthFrom, dayFrom);
-		aCalendarTo.set(yearTo, monthTo, dayTo);
-
-		Long from = aCalendarFrom.getTimeInMillis();
-		Long to = aCalendarTo.getTimeInMillis();
-		Long one_date_time = (long) (1000 * 60 * 60 * 24);
-
-		Long diffDays = (to - from) / one_date_time;
+		LocalDate from = LocalDate.of(yearFrom, monthFrom, dayFrom);
+		LocalDate to = LocalDate.of(yearTo, monthTo, dayTo);
+		long diffDays = ChronoUnit.DAYS.between(from, to) + 1;
 
 		String days = String.format("%s", diffDays);
 
@@ -130,6 +124,16 @@ public class Translator extends Object {
 		aDownload.downloadThumbnails();
 
 		this.inputTable = aDownload.table();
+
+		for (Tuple inputTapule : inputTable.tuples()) {
+			for (String stringValue : inputTapule.values()) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(stringValue);
+				sb.append(",");
+				System.out.print(sb.toString());
+			}
+			System.out.println();
+		}
 
 		this.htmlTable = this.convertFromInputToHtmlTable(this.inputTable);
 
