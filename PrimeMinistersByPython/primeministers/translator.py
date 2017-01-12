@@ -19,6 +19,8 @@ class Translator(object):
 
 	def compute_string_of_days(self, period):
 		"""在位日数を計算して、それを文字列にして応答する。"""
+
+
 		if period == '在位期間': return '在位日数'
 		days = re.split(r'[〜年月日]*', period)
 		days.pop()
@@ -32,7 +34,7 @@ class Translator(object):
 			to_day = datetime.date(d.year, d.month, d.day)
 		diff = to_day - from_day
 
-		return str(diff.days)
+		return str(diff.days + 1)
 
 	def compute_string_of_image(self, tuple):
 		"""サムネイル画像から画像へ飛ぶためのHTML文字列を作成して、それを応答する。"""
