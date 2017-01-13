@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * ライタ：人物の情報のテーブルをHTMLページとして書き出す。
- * 
+ *
  * @version 1.0
  * @author 宮崎光
  */
@@ -224,8 +224,8 @@ public class Writer extends IO {
 					outputWriter.write("</td>\n");
 				}
 				index++;
+				outputWriter.write("\t\t</tr>\n");
 			}
-			outputWriter.write("\t\t</tr>\n");
 		} catch (IOException anException) {
 			anException.printStackTrace();
 		}
