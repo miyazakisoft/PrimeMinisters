@@ -100,12 +100,13 @@ public class Translator extends Object {
 	public String computeStringOfImage(Tuple aTuple) {
 		List<String> values = aTuple.values();
 
-		String aNo = aTuple.attributes().getNumber();
+		String aNumber = values.get(0);
+
 		String aImage = values.get(aTuple.attributes().indexOfImage());
 		String aThumbnail = values.get(aTuple.attributes().indexOfThumbnail());
 
-		String imageTag = "<a name=" + aNo + " href=" + aImage + "><img class=\"borderless\" src=" + aThumbnail
-				+ " width=\"25\" height=\"32\" alt=" + aNo + ".jpg></a>";
+		String imageTag = "<a name=\"" + aNumber + "\" href=\"" + aImage + "\"><img class=\"borderless\" src=\""
+				+ aThumbnail + "\" width=\"25\" height=\"32\" alt=\"" + aNumber + ".jpg\"></a>";
 		return imageTag;
 	}
 
