@@ -84,7 +84,7 @@ public class Translator extends Object {
 		LocalDate to = LocalDate.of(yearTo, monthTo, dayTo);
 		long diffDays = ChronoUnit.DAYS.between(from, to) + 1;
 
-		String days = String.format("%s", diffDays);
+		String days = String.format("%,d", diffDays);
 
 		return days;
 
@@ -188,7 +188,6 @@ public class Translator extends Object {
 				if (aNewAttributes.equals("在位日数")) {
 					aRow.add(daysOfResidence);
 				} else if (aNewAttributes.equals("画像")) {
-
 					aRow.add(this.computeStringOfImage(aTuple));
 					TuppleRowIterator.next();
 					TuppleRowIterator.next();
